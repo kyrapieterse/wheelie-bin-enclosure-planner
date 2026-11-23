@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Check a row of bins, raised lids, gate swing and a straight pull-out path against your available space.">
+  <title>Wheelie-bin enclosure planner | Tint &amp; Screen</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <script defer src="model.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#controls">Skip to controls</a>
+  <header class="shell bar"><img src="tint-and-screen.svg" alt="Tint &amp; Screen" width="190" height="32"><a href="https://tintandscreen.co.za/architectural-screens/wheelie-bin-covers/">Wheelie-bin cover guide</a></header>
+  <main>
+    <div class="intro"><div class="shell"><h1>Wheelie-bin enclosure planner</h1><p>Check a row of bins, raised lids, gate swing and a straight pull-out path against your available space.</p><a class="jump" href="#result">View result</a></div></div>
+    <noscript><p class="shell help">Enable JavaScript to use this offline tool.</p></noscript>
+    <div class="shell workspace">
+      <form id="controls" tabindex="-1" autocomplete="off" onsubmit="return false">
+        <h2>Bins, enclosure and gate</h2><p class="help">Use clear internal dimensions, the gate’s usable opening and your bin’s measured height with its lid fully open.</p>
+        <div class="fields">
+          <label>Bins<input id="count" type="number" value="2" min="1" max="8" step="1" required></label>
+          <label>Bin width (mm)<input id="binw" type="number" value="600" min="50" max="2000" step="1" required></label>
+          <label>Bin depth (mm)<input id="depth" type="number" value="700" min="50" max="2000" step="1" required></label>
+          <label>Height with lid raised (mm)<input id="raised" type="number" value="1600" min="100" max="4000" step="1" required></label>
+          <label>Inside width (mm)<input id="width" type="number" value="1500" min="100" max="10000" step="1" required></label>
+          <label>Inside depth (mm)<input id="inside" type="number" value="900" min="100" max="5000" step="1" required></label>
+          <label>Clear headroom (mm)<input id="head" type="number" value="1800" min="100" max="5000" step="1" required></label>
+          <label>Gap between bins (mm)<input id="gap" type="number" value="50" min="0" max="500" step="1" required></label>
+          <label>Clear gate width (mm)<input id="gate" type="number" value="1400" min="50" max="10000" step="1" required></label>
+          <label>Gate left offset (mm)<input id="offset" type="number" value="50" min="0" max="8000" step="1" required></label>
+          <label>Clear space in front (mm)<input id="front" type="number" value="1500" min="0" max="10000" step="1" required></label>
+          <label class="full">Highlight bin<select id="which"></select></label>
+        </div>
+
+        <p class="message" id="message" role="status"></p>
+      </form>
+      <section class="result" id="result" tabindex="-1" aria-labelledby="result-title">
+        <h2 id="result-title">Enclosure and access</h2>
+        <p class="lead" id="summary" aria-live="polite"></p><canvas id="view" width="900" height="430" aria-label="Plan view with bins, gate swing and pull-out path"></canvas><ul class="rows" id="details"></ul><p class="note">The model uses a single outward-opening leaf. Bins are centred side by side. A straight removal path assumes each bin moves forward without turning.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
